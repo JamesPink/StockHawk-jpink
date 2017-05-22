@@ -97,17 +97,17 @@ public final class QuoteSyncJob {
                     //checks if the name exists
                     String name = stock.getName();
                     Timber.d(name);
-                    Log.d(name, "STOCK NAME:");
+                    //Log.d(name, "STOCK NAME:");
                     if (name == null || name.isEmpty()) {
-                        Log.d(name, "made it into if");
+                        //Log.d(name, "made it into if");
 
                         //Toast.makeText(context, "error", Toast.LENGTH_LONG).show();
-                        Log.d(name, "made it passed toast");
+                        //Log.d(name, "made it passed toast");
                         // MainActivity.help();
                         //MainActivity.showToast(context, "this is wrong");
                         break;
                     }
-                    Log.d(name, "continues after if");
+                    //Log.d(name, "continues after if");
 
                     StockQuote quote = stock.getQuote();
 

@@ -52,7 +52,7 @@ public class StockProvider extends ContentProvider {
                         null,
                         sortOrder
                 );
-                Log.d(returnCursor.toString(), "Full quote response from db");
+                //Log.d(returnCursor.toString(), "Full quote response from db");
                 break;
 
             case QUOTE_FOR_SYMBOL:
@@ -65,7 +65,7 @@ public class StockProvider extends ContentProvider {
                         null,
                         sortOrder
                 );
-                Log.d(returnCursor.toString(), "Quote for a single stock symbol");
+                //Log.d(returnCursor.toString(), "Quote for a single stock symbol");
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI:" + uri);

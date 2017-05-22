@@ -5,6 +5,10 @@
 
     <string name="pref_stocks_key">stocks</string>
 
+    <string name="prefs_name" translatable="false">com.udacity.stockhawk.widget.StockWidgetProvider</string>
+
+    <string name="dollar_plus_symbol" translatable="false">+$</string>
+
 
     <string name="pref_display_mode_key">displayMode</string>
     <string name="pref_display_mode_default">@string/pref_display_mode_percentage_key</string>
@@ -26,6 +30,8 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_add">Add</string>
 
+    <string name="stock_history_detail_btns">Stock details for stock with symbol</string>
+
     <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
     <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
     <string name="error_no_input">No stock added, Please enter the symbol of the stock you wish to add into the text box.</string>
@@ -34,4 +40,5 @@
     <string name="toast_no_connectivity">Will refresh when network available.</string>
     <string name="toast_no_input">No stock added, Please enter the symbol of the stock you wish to add into the text box.</string>
 
+    <string name="line_chart_desc">Value last 2 years</string>
 </resources>

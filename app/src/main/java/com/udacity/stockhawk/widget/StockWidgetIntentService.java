@@ -38,6 +38,7 @@ public class StockWidgetIntentService extends IntentService {
     private static final String PREFS_NAME
             = "com.udacity.stockhawk.widget.StockWidgetProvider";
     private static final String PREF_PREFIX_KEY = "prefix_";
+    private static final String PREF_NOT_FOUND = "No name defined";
 
     public static final String[] STOCK_HISTORY_PROJECTION = {
             Contract.Quote.COLUMN_SYMBOL,
@@ -60,72 +61,12 @@ public class StockWidgetIntentService extends IntentService {
 
         dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
         dollarFormatWithPlus = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
-        dollarFormatWithPlus.setPositivePrefix("+$");
+        dollarFormatWithPlus.setPositivePrefix(getString(R.string.dollar_plus_symbol));
 
-
-        //Retreive widget id's
-        /*
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,
-                StockWidgetProvider.class));
-
-        //get the data
-        Context context = getApplicationContext();
-        ComponentName name = new ComponentName(context,StockWidgetProvider.class);
-        int [] ids = AppWidgetManager.getInstance(context).getAppWidgetIds(name);
-        Log.d(Integer.toString(ids[0]), "- ids");
-
-        //Bundle testBundle = Intent
-        String widgetId = AppWidgetManager.EXTRA_APPWIDGET_ID;
-        Log.d(widgetId, "widgetId");
-
-
-
-
-        int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            mAppWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
-        }
-
-        String symbol = "GOOG";
-        Log.d(String.valueOf(appWidgetId), "- AppWidgetID" );
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, 0);
-
-
-        symbol = prefs.getString("stockSymbol", "No name defined");
-
-
-
-
-
-        Log.d(symbol, "- Symbol");
-        Uri mUri = Contract.Quote.makeUriForStock(symbol);
-        Log.d(mUri.toString(), "- URI");
-        Cursor data;
-        data = getContentResolver().query(mUri, STOCK_HISTORY_PROJECTION, null, null, null);
-        Log.d(data.toString(), "- DATA");
-
-        if (data == null) {
-            Log.d(data.toString(), "data is null");
-            return;
-        }
-        if (!data.moveToFirst()) {
-            Log.d(data.toString(), "data is null");
-            data.close();
-            return;
-        }
-        */
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,
                 StockWidgetProvider.class));
-
-
-
-
-
-
 
             //loop for each widget linking the views
             for (int appWidgetId : appWidgetIds) {
@@ -133,9 +74,9 @@ public class StockWidgetIntentService extends IntentService {
                 //get stock from prefs
                 SharedPreferences prefs = getSharedPreferences(PREFS_NAME, 0);
                 String prefKey = PREF_PREFIX_KEY + appWidgetId;
-                Log.d(prefKey, "PREFKEY IN FOR");
-                String symbol = prefs.getString(prefKey, "No name defined");
-                Log.d(symbol, "SYMBOL IN FOR");
+                //Log.d(prefKey, "PREFKEY IN FOR");
+                String symbol = prefs.getString(prefKey, PREF_NOT_FOUND);
+                //Log.d(symbol, "SYMBOL IN FOR");
 
                 //get the data
 
@@ -150,12 +91,12 @@ public class StockWidgetIntentService extends IntentService {
 
                 //extract the data from the cursor
                 String stockSymbol = data.getString(INDEX_STOCK_SYMBOL);
-                Log.d(stockSymbol, "symbol:");
+                //Log.d(stockSymbol, "symbol:");
                 float stockPrice = data.getFloat(INDEX_STOCK_PRICE);
                 float stockChange = data.getFloat(INDEX_STOCK_ABSOLUTE_CHANGE);
                 data.close();
 
-                Log.d(String.valueOf(appWidgetId), "appWidgetId within for loop");
+                //Log.d(String.valueOf(appWidgetId), "appWidgetId within for loop");
                 int layoutId = R.layout.widget_stock_summary;
                 RemoteViews views = new RemoteViews(getPackageName(), layoutId);
                 views.setTextViewText(R.id.widget_symbol, String.valueOf(stockSymbol));

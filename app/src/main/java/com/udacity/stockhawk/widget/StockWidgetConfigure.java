@@ -10,8 +10,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.udacity.stockhawk.R;
+import com.udacity.stockhawk.data.PrefUtils;
+import com.udacity.stockhawk.sync.QuoteSyncJob;
+import com.udacity.stockhawk.ui.MainActivity;
 
 import java.util.ArrayList;
 
@@ -48,17 +52,24 @@ public class StockWidgetConfigure extends AppCompatActivity {
             finish();
         }
 
-        mAppWidgetPrefix.setText(loadTitlePref(StockWidgetConfigure.this, mAppWidgetId));
+        //mAppWidgetPrefix.setText(loadTitlePref(StockWidgetConfigure.this, mAppWidgetId));
     }
 
     //TODO - WE COULD STORE THE ENTERED VARIABLE IN A PUBLIC STRING THAT COULD BE USED BY THE INTENT SERVICE
+    //TODO - ADD SOME DATA VALIDATION TO THE CONFIG ACTIVITY TO PREVENT INCORRECT SYMBOLS BEING ADDED AND MAYBE ALSO CHECK STOCK ALREADY EXISTS IN DB
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         public void onClick(View v) {
             final Context context = StockWidgetConfigure.this;
             // When the button is clicked, save the string in our prefs and return that they
             // clicked OK.
+
             String titlePrefix = mAppWidgetPrefix.getText().toString();
             saveTitlePref(context, mAppWidgetId, titlePrefix);
+
+            if (titlePrefix.length() != 4 || titlePrefix.matches(".*\\d+.") || titlePrefix == null || titlePrefix.isEmpty()) {
+                showError();
+            }
+
             // Push widget update to surface with newly set prefix
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
             //StockWidgetProvider.on(context, appWidgetManager,
@@ -74,9 +85,9 @@ public class StockWidgetConfigure extends AppCompatActivity {
     // Write the prefix to the SharedPreferences object for this widget
     static void saveTitlePref(Context context, int appWidgetId, String text) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
-        String test = PREF_PREFIX_KEY + appWidgetId;
-        prefs.putString("stockSymbol", text);
-        Log.d(test, "- PREFIX KEY");
+        String key = PREF_PREFIX_KEY + appWidgetId;
+        prefs.putString(key, text);
+        //Log.d(key, "- PREFIX KEY");
         prefs.commit();
     }
     // Read the prefix from the SharedPreferences object for this widget.
@@ -95,5 +106,11 @@ public class StockWidgetConfigure extends AppCompatActivity {
     static void loadAllTitlePrefs(Context context, ArrayList<Integer> appWidgetIds,
                                   ArrayList<String> texts) {
     }
+
+
+        public void showError() {
+            String message = getString(R.string.toast_no_input);
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
 
 }

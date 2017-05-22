@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/widget"
     android:orientation="horizontal"
@@ -10,34 +10,42 @@
     <TextView
         android:id="@+id/widget_symbol"
         style="@style/StockSymbolTextStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         tools:text="GOOG" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        >
+
 
         <TextView
             android:id="@+id/widget_price"
             style="@style/BidPriceTextStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/widget_symbol"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="10sp"
-            tools:text="1000.00" />
+
+            tools:text="1000.00"
+            />
 
         <TextView
             android:id="@+id/widget_change"
             style="@style/PercentChangeTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/percent_change_pill_green"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:layout_below="@+id/widget_price"
+            android:layout_marginTop="4dp"
+
             tools:text="100%" />
-    </LinearLayout>
 
 
-</LinearLayout>
+
+</RelativeLayout>

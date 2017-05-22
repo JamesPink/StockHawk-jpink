@@ -1,21 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
     android:id="@+id/activity_stock_history"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.udacity.stockhawk.ui.StockHistory">
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lc_stock_chart"
-        android:layout_width="match_parent"
-        android:layout_height="300dp">
 
-    </com.github.mikephil.charting.charts.LineChart>
+        <TextView
+            android:id="@+id/history_symbol"
+            style="@style/StockSymbolTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            tools:text="GOOG"/>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lc_stock_chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/history_symbol">
+        </com.github.mikephil.charting.charts.LineChart>
+        <TextView
+            android:id="@+id/history_price"
+            style="@style/BidPriceTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lc_stock_chart"
+            android:padding = "3dp"
+            android:layout_marginEnd="10sp"
+            tools:text="1000.00"/>
+        <TextView
+            android:id="@+id/history_percent_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_price"
+            style="@style/PercentChangeTextStyle"
+            android:background="@drawable/percent_change_pill_green"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:layout_margin="3dp"
+            tools:text="100%"/>
+        <TextView
+            android:id="@+id/history_absolute_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_percent_change"
+            style="@style/PercentChangeTextStyle"
+            android:background="@drawable/percent_change_pill_green"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:layout_margin="3dp"
+            tools:text="100"/>
 
-</RelativeLayout>
+</RelativeLayout></ScrollView>
     </layout>
