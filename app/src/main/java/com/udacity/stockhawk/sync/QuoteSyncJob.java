@@ -13,12 +13,15 @@ import android.widget.Toast;
 
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
+import com.udacity.stockhawk.data.DummyData;
 import com.udacity.stockhawk.data.PrefUtils;
+import com.udacity.stockhawk.mock.MockUtils;
 import com.udacity.stockhawk.ui.MainActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -68,6 +71,18 @@ public final class QuoteSyncJob {
                 return;
             }
             Map<String, Stock> quotes = YahooFinance.get(stockArray);
+            //Map<String, Stock> quotes = new HashMap<>();
+
+
+            //String s = DummyData.dummyStockString;
+            //String[] pairs = s.split(",");
+            //for (int i=0;i<pairs.length;i++) {
+                //String pair = pairs[i];
+                //String[] keyValue = pair.split(":");
+                //quotes.put(stockArray[i], keyValue[1]));
+           // }
+
+
             Iterator<String> iterator = stockCopy.iterator();
 
             Timber.d(quotes.toString());
@@ -102,7 +117,13 @@ public final class QuoteSyncJob {
 
                     // WARNING! Don't request historical data for a stock that doesn't exist!
                     // The request will hang forever X_x
-                    List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
+                    //List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
+
+                    //Note to my lovely reviewer
+                    //due to api issues i have commented the above line and replaced it with one
+                    //below as instructed
+                    //the history data is now fetched from mockutils
+                    List<HistoricalQuote> history = MockUtils.getHistory();
 
                     StringBuilder historyBuilder = new StringBuilder();
 
@@ -112,7 +133,6 @@ public final class QuoteSyncJob {
                         historyBuilder.append(it.getClose());
                         historyBuilder.append("\n");
                     }
-
 
                     ContentValues quoteCV = new ContentValues();
                     quoteCV.put(Contract.Quote.COLUMN_SYMBOL, symbol);

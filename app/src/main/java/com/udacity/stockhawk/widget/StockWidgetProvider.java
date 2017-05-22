@@ -38,4 +38,5 @@ public class StockWidgetProvider extends AppWidgetProvider {
             context.startService(new Intent(context, StockWidgetIntentService.class));
         }
     }
+
 }

@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 
 public class StockProvider extends ContentProvider {
@@ -51,6 +52,7 @@ public class StockProvider extends ContentProvider {
                         null,
                         sortOrder
                 );
+                Log.d(returnCursor.toString(), "Full quote response from db");
                 break;
 
             case QUOTE_FOR_SYMBOL:
@@ -63,7 +65,7 @@ public class StockProvider extends ContentProvider {
                         null,
                         sortOrder
                 );
-
+                Log.d(returnCursor.toString(), "Quote for a single stock symbol");
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI:" + uri);
