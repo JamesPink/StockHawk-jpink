@@ -55,8 +55,7 @@ public class StockWidgetConfigure extends AppCompatActivity {
         //mAppWidgetPrefix.setText(loadTitlePref(StockWidgetConfigure.this, mAppWidgetId));
     }
 
-    //TODO - WE COULD STORE THE ENTERED VARIABLE IN A PUBLIC STRING THAT COULD BE USED BY THE INTENT SERVICE
-    //TODO - ADD SOME DATA VALIDATION TO THE CONFIG ACTIVITY TO PREVENT INCORRECT SYMBOLS BEING ADDED AND MAYBE ALSO CHECK STOCK ALREADY EXISTS IN DB
+
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         public void onClick(View v) {
             final Context context = StockWidgetConfigure.this;
