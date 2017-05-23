@@ -20,7 +20,7 @@ import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.ui.MainActivity;
 
-import org.stringtemplate.v4.ST;
+
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

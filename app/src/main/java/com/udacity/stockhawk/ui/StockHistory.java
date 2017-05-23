@@ -2,6 +2,9 @@ package com.udacity.stockhawk.ui;
 
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
+import android.databinding.Bindable;
+import android.databinding.BaseObservable;
+import android.databinding.ViewDataBinding;
 import android.net.Uri;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -19,6 +22,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.databinding.ActivityStockHistoryBinding;
+
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -65,7 +69,7 @@ are unused.
     private Uri mUri;
 
     //activity for data binding so we avoid the need for findviewbyid
-    private ActivityStockHistoryBinding mDetailBinding;
+    public ActivityStockHistoryBinding mDetailBinding;
 
     /**
      *in onCreate we set the data binder, get the data from the intent
@@ -87,6 +91,7 @@ are unused.
 
 
         mDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_stock_history);
+
 
         mUri = getIntent().getData();
         if (mUri == null) throw new NullPointerException("URI for DetailActivity cannot be null");
@@ -156,7 +161,7 @@ are unused.
         TextView percentChangeTextView = (TextView) mDetailBinding.historyPercentChange;
         TextView absoluteChangeTextView = (TextView) mDetailBinding.historyAbsoluteChange;
         symbolTextView.setText(symbol);
-        priceTextView.setText(String.valueOf(dollarPrice));
+        priceTextView.setText(dollarPrice);
         percentChangeTextView.setText(percentage);
         absoluteChangeTextView.setText(change);
 
