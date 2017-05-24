@@ -1,28 +1,28 @@
 <resources>
-    <string name="app_name">Stock Hawk</string>
+    <string name="app_name" translatable="false">Stock Hawk</string>
 
     <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
 
-    <string name="pref_stocks_key">stocks</string>
+    <string name="pref_stocks_key" translatable="false">stocks</string>
 
     <string name="prefs_name" translatable="false">com.udacity.stockhawk.widget.StockWidgetProvider</string>
 
     <string name="dollar_plus_symbol" translatable="false">+$</string>
 
 
-    <string name="pref_display_mode_key">displayMode</string>
-    <string name="pref_display_mode_default">@string/pref_display_mode_percentage_key</string>
+    <string name="pref_display_mode_key" translatable="false">displayMode</string>
+    <string name="pref_display_mode_default" translatable="false">@string/pref_display_mode_percentage_key</string>
 
-    <string name="pref_display_mode_absolute_key">absolute</string>
-    <string name="pref_display_mode_percentage_key">percentage</string>
+    <string name="pref_display_mode_absolute_key" translatable="false">absolute</string>
+    <string name="pref_display_mode_percentage_key" translatable="false">percentage</string>
 
-    <string name="default_stocks_yahoo">YHOO</string>
-    <string name="default_stocks_apple">AAPL</string>
-    <string name="default_stocks_microsoft">MSFT</string>
-    <string name="default_stocks_facebook">FB</string>
+    <string name="default_stocks_yahoo" translatable="false">YHOO</string>
+    <string name="default_stocks_apple" translatable="false">AAPL</string>
+    <string name="default_stocks_microsoft" translatable="false">MSFT</string>
+    <string name="default_stocks_facebook" translatable="false">FB</string>
 
 
-    <string name="action_change_units">@string/pref_display_mode_key</string>
+    <string name="action_change_units" translatable="false">@string/pref_display_mode_key</string>
 
 
     <string name="dialog_title">Add Stock</string>
@@ -41,4 +41,7 @@
     <string name="toast_no_input">No stock added, Please enter the symbol of the stock you wish to add into the text box.</string>
 
     <string name="line_chart_desc">Value last 2 years</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="stockhawk">StockHawk</string>
 </resources>

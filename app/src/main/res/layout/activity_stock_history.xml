@@ -24,7 +24,7 @@
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/lc_stock_chart"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="400dp"
             android:layout_below="@+id/history_symbol">
         </com.github.mikephil.charting.charts.LineChart>
         <TextView

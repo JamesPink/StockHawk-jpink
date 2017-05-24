@@ -3,19 +3,14 @@ package com.udacity.stockhawk.widget;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.data.PrefUtils;
-import com.udacity.stockhawk.sync.QuoteSyncJob;
-import com.udacity.stockhawk.ui.MainActivity;
 
 import java.util.ArrayList;
 

@@ -2,16 +2,13 @@ package com.udacity.stockhawk.ui;
 
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
-import android.databinding.Bindable;
-import android.databinding.BaseObservable;
-import android.databinding.ViewDataBinding;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -188,12 +185,20 @@ are unused.
 
         //set the data variables for the linechart
         LineDataSet dataSet = new LineDataSet(entries, symbol);
+        dataSet.setValueTextColor(Color.RED);
         LineData lineData = new LineData(dataSet);
         stockGraph.setData(lineData);
         Description desc = new Description();
         desc.setText(getString(R.string.line_chart_desc));
+        desc.setTextColor(Color.WHITE);
         stockGraph.setDescription(desc);
         stockGraph.getXAxis().setDrawLabels(false);
+        stockGraph.setNoDataTextColor(Color.WHITE);
+        stockGraph.getAxisLeft().setTextColor(Color.WHITE); // left y-axis
+        stockGraph.getAxisRight().setTextColor(Color.WHITE);
+        stockGraph.getXAxis().setTextColor(Color.WHITE);
+        stockGraph.getLegend().setTextColor(Color.WHITE);
+
 
 
 

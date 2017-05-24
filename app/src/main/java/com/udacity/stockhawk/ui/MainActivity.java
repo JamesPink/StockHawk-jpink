@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * Method responds to clicks on stocks by opening the StockHistory activity and passes it a Uri containing the
      * reference to the stock in the database
      * @param symbol
-     * @see Contract.Quote.makeUriForStock
+     * @see com.udacity.stockhawk.data.Contract.Quote
      */
     @Override
     public void onClick(String symbol) {
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     void addStock(String symbol) {
-        if (symbol.length() != 4 || symbol.matches(".*\\d+.")) {
+        if (symbol.length() > 4 || symbol.matches(".*\\d+.")) {
             showError();
         } else {
             if (symbol != null && !symbol.isEmpty()) {
@@ -214,5 +214,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         String message = getString(R.string.toast_no_input);
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
+    public void showToast(final String toast)
+    {
+        runOnUiThread(new Runnable() {
+            public void run()
+            {
+                Toast.makeText(MainActivity.this, toast, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 
 }
